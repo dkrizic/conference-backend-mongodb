@@ -8,16 +8,16 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Path("/room")
+//@Path("/room")
 public interface RoomService {
 
-	@POST
+//	@POST
 	public void add(Room r);
 
-	@DELETE
-	@Path("/{rid}")
+//	@DELETE
+//	@Path("/{rid}")
 	public void delete(@PathParam("rid") String rid);
 
-	@GET
+//	@GET
 	public Set<Room> readAll();
 }
