@@ -2,10 +2,6 @@ package com.prodyna.conference;
 
 import java.util.Set;
 
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 //@Path("/room")
@@ -20,4 +16,6 @@ public interface RoomService {
 
 //	@GET
 	public Set<Room> readAll();
+
+	Room readById(String id);
 }

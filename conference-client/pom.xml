@@ -11,14 +11,13 @@
 		<dependency>
 			<groupId>org.jboss.bom</groupId>
 			<artifactId>jboss-javaee-6.0-with-errai</artifactId>
-			<version>1.0.2.Final</version>
 			<type>pom</type>
 			<scope>import</scope>
+				<version>1.0.2.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.as</groupId>
 			<artifactId>jboss-as-jaxrs</artifactId>
-			<version>7.1.2.Final</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

@@ -13,7 +13,6 @@
 		<dependency>
 			<groupId>com.prodyna.conference</groupId>
 			<artifactId>conference-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mongodb</groupId>
@@ -58,9 +57,9 @@
 		<dependency>
 			<groupId>org.jboss.bom</groupId>
 			<artifactId>jboss-javaee-6.0-with-errai</artifactId>
-			<version>1.0.2.Final</version>
 			<type>pom</type>
 			<scope>import</scope>
+				<version>1.0.2.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.as</groupId>
