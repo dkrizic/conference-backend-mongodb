@@ -13,7 +13,7 @@
 			<artifactId>jboss-javaee-6.0-with-errai</artifactId>
 			<type>pom</type>
 			<scope>import</scope>
-				<version>1.0.2.Final</version>
+			<version>1.0.2.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.as</groupId>

@@ -1,5 +1,6 @@
 package com.prodyna.conference.service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,6 @@ import com.mongodb.DBObject;
 import com.prodyna.conference.Speaker;
 import com.prodyna.conference.SpeakerService;
 import com.prodyna.conference.monitoring.Monitored;
-import com.prodyna.conference.service.producer.Speakers;
 
 @Monitored
 public class SpeakerServiceBean implements SpeakerService {
@@ -22,7 +22,6 @@ public class SpeakerServiceBean implements SpeakerService {
 	private Logger log;
 
 	@Inject
-	@Speakers
 	private DBCollection speakers;
 
 	@Override
@@ -31,6 +30,7 @@ public class SpeakerServiceBean implements SpeakerService {
 		o.put("_id", speaker.getId());
 		o.put("name", speaker.getName());
 		o.put("type", "speaker");
+		o.put("created", new Date() );
 		speakers.insert(o);
 	}
 

@@ -1,5 +1,6 @@
 package com.prodyna.conference.service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,6 @@ import com.prodyna.conference.Speaker;
 import com.prodyna.conference.Talk;
 import com.prodyna.conference.TalkService;
 import com.prodyna.conference.monitoring.Monitored;
-import com.prodyna.conference.service.producer.Talks;
 
 @Monitored
 public class TalkServiceBean implements TalkService {
@@ -26,7 +26,6 @@ public class TalkServiceBean implements TalkService {
 	private Logger log;
 
 	@Inject
-	@Talks
 	private DBCollection talks;
 
 	@Inject
@@ -38,6 +37,7 @@ public class TalkServiceBean implements TalkService {
 		o.put("name", t.getName());
 		o.put("room", t.getRoom().getId());
 		o.put("type", "talk");
+		o.put("created", new Date() );
 		o.put("_id", t.getId());
 
 		BasicDBList l = new BasicDBList();

@@ -1,5 +1,6 @@
 package com.prodyna.conference.service;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,6 @@ import com.mongodb.WriteResult;
 import com.prodyna.conference.Room;
 import com.prodyna.conference.RoomService;
 import com.prodyna.conference.monitoring.Monitored;
-import com.prodyna.conference.service.producer.Rooms;
 
 @Monitored
 public class RoomServiceBean implements RoomService {
@@ -23,7 +23,6 @@ public class RoomServiceBean implements RoomService {
 	private Logger log;
 
 	@Inject
-	@Rooms
 	private DBCollection rooms;
 
 	@Override
@@ -33,6 +32,7 @@ public class RoomServiceBean implements RoomService {
 		o.put("_id", r.getId());
 		o.put("name", r.getName());
 		o.put("type", "room");
+		o.put("created", new Date() );
 		WriteResult wr = rooms.insert(o);
 		if (!wr.getLastError().ok()) {
 			throw new RuntimeException(wr.getError());
