@@ -28,7 +28,7 @@ public class TalkServiceBean implements TalkService {
 	@Inject
 	@Talks
 	private DBCollection talks;
-	
+
 	@Inject
 	private RoomService rs;
 
@@ -39,34 +39,34 @@ public class TalkServiceBean implements TalkService {
 		o.put("room", t.getRoom().getId());
 		o.put("type", "talk");
 		o.put("_id", t.getId());
-		
+
 		BasicDBList l = new BasicDBList();
-		for( Speaker s : t.getSpeakers() ) {
-			l.add( s.getId() );
+		for (Speaker s : t.getSpeakers()) {
+			l.add(s.getId());
 		}
-		o.put("speakers", l );
-		talks.insert( o );
+		o.put("speakers", l);
+		talks.insert(o);
 	}
 
 	@Override
 	public Set<Talk> readAll() {
 		BasicDBObject q = new BasicDBObject("type", "talk");
-		DBCursor c = talks.find( q );
+		DBCursor c = talks.find(q);
 		Set<Talk> ts = new HashSet<Talk>();
-		while( c.hasNext() ) {
+		while (c.hasNext()) {
 			DBObject o = c.next();
 			Talk talk = new Talk();
-			talk.setId( "" + o.get("_id") );
-			talk.setName( "" + o.get("name") );
-			talk.setRoom( rs.readById( "" + o.get("room") ) );
-			ts.add( talk );
+			talk.setId("" + o.get("_id"));
+			talk.setName("" + o.get("name"));
+			talk.setRoom(rs.readById("" + o.get("room")));
+			ts.add(talk);
 		}
 		return ts;
 	}
 
 	@Override
 	public void delete(String id) {
-		talks.remove( new BasicDBObject("_id", id ) );
+		talks.remove(new BasicDBObject("_id", id));
 	}
 
 }

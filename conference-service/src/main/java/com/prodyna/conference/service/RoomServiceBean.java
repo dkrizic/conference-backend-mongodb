@@ -22,7 +22,8 @@ public class RoomServiceBean implements RoomService {
 	@Inject
 	private Logger log;
 
-	@Inject @Rooms
+	@Inject
+	@Rooms
 	private DBCollection rooms;
 
 	@Override
@@ -40,19 +41,20 @@ public class RoomServiceBean implements RoomService {
 
 	@Override
 	public void delete(String rid) {
-		rooms.remove( new BasicDBObject("_id", rid ));
+		rooms.remove(new BasicDBObject("_id", rid));
 	}
 
 	@Override
-	public Room readById( String id ) {
-		 return new Room( "" + rooms.find( new BasicDBObject("_id", id ) ).next().get("name") );
+	public Room readById(String id) {
+		return new Room(""
+				+ rooms.find(new BasicDBObject("_id", id)).next().get("name"));
 	}
-	
+
 	@Override
 	public Set<Room> readAll() {
 		BasicDBObject q = new BasicDBObject();
 		q.put("type", "room");
-		DBCursor c = rooms.find( q );
+		DBCursor c = rooms.find(q);
 		Set<Room> rs = new HashSet<Room>();
 		while (c.hasNext()) {
 			BasicDBObject o = (BasicDBObject) c.next();

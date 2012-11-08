@@ -1,6 +1,7 @@
 package com.prodyna.conference.service;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -49,8 +50,12 @@ public class TalkServiceTest extends LoggingTest {
 	@Test
 	@InSequence(0)
 	public void deleteAll() {
+		try {
 		for (Talk t : ts.readAll()) {
 			ts.delete(t.getId());
+		}
+		} catch( NoSuchElementException e ) {
+			// ignore
 		}
 	}
 
